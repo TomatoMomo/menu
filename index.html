@@ -1,86 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>菜单</title>
-    <style>
-        .page {
-            display: none;
-            width: 100%;
-            padding-top: 141%;
-            background-size: 100% 100%;
-            background-repeat: no-repeat; /* 禁止背景图片重复 */
-            background-position: center; /* 将背景图片定位在元素中心 */
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swipe Page</title>
+<style>
+    body, html {
+        height: 100%;
+        margin: 0;
+        overflow: hidden;
+    }
 
-        .active {
-            display: block;
-        }
+    .page {
+        width: 100vw;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 2em;
+    }
 
-        .pagination {
-            text-align: center;
-            margin-top: 20px;
-        }
+    #page1 { background-color: #FFD700; }
+    #page2 { background-color: #FFA07A; }
+    #page3 { background-color: #00BFFF; }
 
-        .pagination button {
-            padding: 5px 10px;
-            margin: 0 5px;
-            cursor: pointer;
-        }
-    </style>
+</style>
 </head>
-
 <body>
-    <div class="page active" id="page1" style="background-image: url(./menu1.png);">
-    </div>
-    <div class="page" id="page2" style="background-image: url(./menu2.png);">
-    </div>
-    <div class="page" id="page3" style="background-image: url(./menu3.png);">
-    </div>
-    <div class="page" id="page4" style="background-image: url(./menu4.png);">
-    </div>
-    <div class="page" id="page5" style="background-image: url(./388.png);">
-    </div>
-    <div class="page" id="page6" style="background-image: url(./688.png);">
-    </div>
-    <div class="page" id="page7" style="background-image: url(./888.png);">
-    </div>
-    <div class="page" id="page8" style="background-image: url(./1288.png);">
-    </div>
-    <div class="pagination">
-        <button class="prev">上一页</button>
-        <button class="next">下一页</button>
-    </div>
+<div id="page1" class="page">Page 1</div>
+<div id="page2" class="page">Page 2</div>
+<div id="page3" class="page">Page 3</div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            var currentPage = 1;
-            showPage(currentPage);
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+$(document).ready(function(){
+    let currentPage = 1;
+    const numPages = $('.page').length;
 
-            $('.prev').click(function () {
-                if (currentPage > 1) {
-                    currentPage--;
-                    showPage(currentPage);
-                }
-            });
+    $(document).on('swipeleft', function() {
+        if (currentPage < numPages) {
+            currentPage++;
+            $('html, body').animate({
+                scrollLeft: $(window).width() * (currentPage - 1)
+            }, 500);
+        }
+    });
 
-            $('.next').click(function () {
-                if (currentPage < $('.page').length) {
-                    currentPage++;
-                    showPage(currentPage);
-                }
-            });
-
-            function showPage(page) {
-                $('.page').removeClass('active');
-                $('#page' + page).addClass('active');
-            }
-        });
-    </script>
-
+    $(document).on('swiperight', function() {
+        if (currentPage > 1) {
+            currentPage--;
+            $('html, body').animate({
+                scrollLeft: $(window).width() * (currentPage - 1)
+            }, 500);
+        }
+    });
+});
+</script>
 </body>
-
 </html>

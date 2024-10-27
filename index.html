@@ -1,40 +1,89 @@
-
-<!DoctType html />
-<html lang="zh">
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
-    <meta charset="utf-8" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>菜单</title>
+    <style>
+        .page {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .pagination {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .pagination button {
+            padding: 5px 10px;
+            margin: 0 5px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 
 <body>
-    <div>
-        <div>
-            <img src="menu1.png" />
-        </div>
-        <div>
-            <img src="menu2.png" />
-        </div>
-        <div>
-            <img src="menu3.png" />
-        </div>
-        <div>
-            <img src="menu4.png" />
-        </div>
-        <div>
-            <img src="388.png" />
-        </div>
-        <div>
-            <img src="688.png" />
-        </div>
-        <div>
-            <img src="888.png" />
-        </div>
-        <div>
-            <img src="1288.png" />
-        </div>
-
+    <div class="page active" id="page1">
+        <img src="menu1.png" />
     </div>
+    <div class="page" id="page2">
+        <img src="menu2.png" />
+    </div>
+    <div class="page" id="page3">
+        <img src="menu3.png" />
+    </div>
+    <div class="page" id="page4">
+        <img src="menu4.png" />
+    </div>
+    <div class="page" id="page5">
+        <img src="388.png" />
+    </div>
+    <div class="page" id="page6">
+        <img src="688.png" />
+    </div>
+    <div class="page" id="page7">
+        <img src="888.png" />
+    </div>
+    <div class="page" id="page8">
+        <img src="1288.png" />
+    </div>
+    <div class="pagination">
+        <button class="prev">上一页</button>
+        <button class="next">下一页</button>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            var currentPage = 1;
+            showPage(currentPage);
+
+            $('.prev').click(function () {
+                if (currentPage > 1) {
+                    currentPage--;
+                    showPage(currentPage);
+                }
+            });
+
+            $('.next').click(function () {
+                if (currentPage < $('.page').length) {
+                    currentPage++;
+                    showPage(currentPage);
+                }
+            });
+
+            function showPage(page) {
+                $('.page').removeClass('active');
+                $('#page' + page).addClass('active');
+            }
+        });
+    </script>
+
 </body>
 
 </html>

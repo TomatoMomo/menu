@@ -8,7 +8,11 @@
     <style>
         .page {
             display: none;
-            width:100%;
+            width: 100%;
+            padding-top: 141%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat; /* 禁止背景图片重复 */
+            background-position: center; /* 将背景图片定位在元素中心 */
         }
 
         .active {
@@ -29,29 +33,21 @@
 </head>
 
 <body>
-    <div class="page active" id="page1">
-        <img src="menu1.png" />
+    <div class="page active" id="page1" style="background-image: url(./menu1.png);">
     </div>
-    <div class="page" id="page2">
-        <img src="menu2.png" />
+    <div class="page" id="page2" style="background-image: url(./menu2.png);">
     </div>
-    <div class="page" id="page3">
-        <img src="menu3.png" />
+    <div class="page" id="page3" style="background-image: url(./menu3.png);">
     </div>
-    <div class="page" id="page4">
-        <img src="menu4.png" />
+    <div class="page" id="page4" style="background-image: url(./menu4.png);">
     </div>
-    <div class="page" id="page5">
-        <img src="388.png" />
+    <div class="page" id="page5" style="background-image: url(./388.png);">
     </div>
-    <div class="page" id="page6">
-        <img src="688.png" />
+    <div class="page" id="page6" style="background-image: url(./688.png);">
     </div>
-    <div class="page" id="page7">
-        <img src="888.png" />
+    <div class="page" id="page7" style="background-image: url(./888.png);">
     </div>
-    <div class="page" id="page8">
-        <img src="1288.png" />
+    <div class="page" id="page8" style="background-image: url(./1288.png);">
     </div>
     <div class="pagination">
         <button class="prev">上一页</button>

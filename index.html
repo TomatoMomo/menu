@@ -1,60 +1,61 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Swipe Page</title>
-<style>
-    body, html {
-        height: 100%;
-        margin: 0;
-        overflow: hidden;
-    }
-
-    .page {
-        width: 100vw;
-        height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        font-size: 2em;
-    }
-
-    #page1 { background-color: #FFD700; }
-    #page2 { background-color: #FFA07A; }
-    #page3 { background-color: #00BFFF; }
-
-</style>
+    <link rel="stylesheet" href="swiper-bundle.min.css">
+    <style>
+        .swiper {
+            width: 100%;
+            height: 3500px;
+        }
+        .swi-pic {
+            width: 100%;
+            padding-top: 141%;
+            background-size: 100% 100%;
+            background-repeat: no-repeat; /* 禁止背景图片重复 */
+            background-position: center; /* 将背景图片定位在元素中心 */
+        }
+    </style>
 </head>
+
 <body>
-<div id="page1" class="page">Page 1</div>
-<div id="page2" class="page">Page 2</div>
-<div id="page3" class="page">Page 3</div>
+    <div class="swiper">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./menu1.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./menu2.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./menu3.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./menu4.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./388.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./688.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./888.png);"></div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swi-pic" style="background-image: url(./1288.png);"></div>
+            </div>
+        </div>
+    </div>
+    <script src="swiper-bundle.min.js"></script>
 
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script>
-$(document).ready(function(){
-    let currentPage = 1;
-    const numPages = $('.page').length;
+    <script>
+        var mySwiper = new Swiper('.swiper', {
+            direction: 'horizontal', // 垂直切换选项
+            loop: true, // 循环模式选项
 
-    $(document).on('swipeleft', function() {
-        if (currentPage < numPages) {
-            currentPage++;
-            $('html, body').animate({
-                scrollLeft: $(window).width() * (currentPage - 1)
-            }, 500);
-        }
-    });
-
-    $(document).on('swiperight', function() {
-        if (currentPage > 1) {
-            currentPage--;
-            $('html, body').animate({
-                scrollLeft: $(window).width() * (currentPage - 1)
-            }, 500);
-        }
-    });
-});
-</script>
+        })        
+    </script>
 </body>
+
 </html>
